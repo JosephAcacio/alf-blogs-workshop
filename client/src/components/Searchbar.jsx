@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import '../styles/Searchbar.css';
 import {IoSearchOutline} from 'react-icons/io5'
 
-const Searchbar = () => {
+const Searchbar = ( {searchText, setSearchText} ) => {
+
     return(
         <div className="search-bar">
             <div className="search-icon-container">
@@ -11,7 +13,10 @@ const Searchbar = () => {
                 className = "search-input"
                 type="text" 
                 placeholder='Search Article'
+                value={searchText}
+                onChange={(e) => setSearchText(e.target.value)}
             />
+
 
         </div>
     );
