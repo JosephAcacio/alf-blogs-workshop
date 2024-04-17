@@ -3,12 +3,17 @@ const express = require("express");
 const app = express();
 const connectDb = require('./config/db');
 const { errorHandler } = require('./middleware/errorMiddleware')
+const cors = require('cors');
 
 //connecting to database
 connectDb();
 
 //serve static files from the public directory
 app.use(express.static('public'));
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+  }));
 
 app.get('/AWS', (req, res) =>{
     res.status(200).json({message: 'Hello AWS PUPies'});
